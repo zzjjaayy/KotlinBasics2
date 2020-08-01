@@ -38,4 +38,16 @@ fun main() {
     sayHello3()
     //we can pass functions without any arguments because we passed in default values
 
+
+    /**
+     * CLASSES
+     */
+
+    val person = Person("Peter", "Parker")
+    person.lastName // calling for a property
+    person.firstName
+    person.nickName = "Jay" //changes the property as it was a var
+
+    person.printInfo()
+    // In kotlin we can call to properties without getters and setters
 }
