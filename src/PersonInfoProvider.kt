@@ -30,7 +30,8 @@ interface SessionInfoProvider {
 // But if we declare the class as abstract, we WON'T be able to create an
 // instance of it with the "val provider = BasicInfoProvider"
 
-class BasicInfoProvider : PersonInfoProvider, SessionInfoProvider{
+open class BasicInfoProvider : PersonInfoProvider, SessionInfoProvider{
+// the class is open i.e can be inherited
 // The above class declaration states that it is implementing the
 // PersonInfoProvider using the colon sign and comma separating the interfaces
 
@@ -53,8 +54,10 @@ class BasicInfoProvider : PersonInfoProvider, SessionInfoProvider{
         get() = "BasicInfoProvider"
         //initialising the variable declared in the interface
 
+    protected open val sessionPrefix = "Session"
+    // To access the property we need to mark it as open {just as a class}
     override fun getSessionID(): String {
-        return "Session"
+        return sessionPrefix
     }
     //implements the function of the SessionInfoProvider Interface
 
@@ -62,7 +65,7 @@ class BasicInfoProvider : PersonInfoProvider, SessionInfoProvider{
 
 
 fun main() {
-    val provider = BasicInfoProvider()
+    val provider = FancyInfoProvider()
     provider.printInfo(Person())
     provider.getSessionID()
     // called an function of the class by providing an empty instance of the
