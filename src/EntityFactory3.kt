@@ -1,7 +1,7 @@
 import java.util.*
 
 /**
- * SEALED CLASS
+ * DATA CLASSES
  */
 
 enum class levelType1 {
@@ -39,6 +39,8 @@ sealed class EntityFactory3() {
     }
 
     //classes which have access to sealed class
+    // data classes are specially made to hold data and have some standard
+    // functionality and utility functions which can be used.
     data class Easy(val id:String, val name:String) : EntityFactory3()
     data class Medium(val id:String, val name:String) : EntityFactory3()
     data class Hard(val id:String, val name:String, val multiplier:Float) : EntityFactory3()
@@ -48,11 +50,10 @@ sealed class EntityFactory3() {
 
 fun main() {
     val entity = unknown.create(levelType1.EASY)
-    val msg = when (entity) {
-        EntityFactory3.Help -> "help"
-        is EntityFactory3.Easy -> "help"
-        is EntityFactory3.Medium -> "help"
-        is EntityFactory3.Hard -> "help"
-        // is checks if it is an instance of that class
-    }
+    val entity1 = unknown.create(levelType1.EASY)
+
+    if(entity == entity1) {
+        println("equal")} else {println("not equal")}
+    // "==" checks if their values are equal
+    // "===" checks if they are the same reference
 }
