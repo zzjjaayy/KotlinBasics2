@@ -1,7 +1,7 @@
 import java.util.*
 
 /**
- * DATA CLASSES
+ * Extension Functions & Properties
  */
 
 enum class levelType1 {
@@ -48,12 +48,29 @@ sealed class EntityFactory3() {
 
 }
 
+// The following function is an extension to the EntityFactory3 medium class
+// it is used to add a function to the class
+fun EntityFactory3.Medium.printInfo() {
+    println("Done. : $id : $name")
+}
+
+// The following is a property extension of the EntityFactory3 medium class
+// we CANNOT initialise the value of the property because it has no backing
+// field and therefore we use a getter
+val EntityFactory3.Medium.info : String
+    get() = "info"
+
 fun main() {
     val entity = unknown.create(levelType1.EASY)
-    val entity1 = unknown.create(levelType1.EASY)
 
-    if(entity == entity1) {
-        println("equal")} else {println("not equal")}
-    // "==" checks if their values are equal
-    // "===" checks if they are the same reference
+    // call the extended function {directly calling}
+    EntityFactory3.Medium("id", "name").printInfo()
+
+    //using smart cast to call extended functions
+    // {calling through "unknown" object}
+    val entity2 = unknown.create(levelType1.MEDIUM)
+    if (entity2 is EntityFactory3.Medium) {
+        entity2.printInfo()
+        println(entity2.info)
+    }
 }
