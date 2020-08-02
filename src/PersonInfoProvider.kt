@@ -65,7 +65,21 @@ open class BasicInfoProvider : PersonInfoProvider, SessionInfoProvider{
 
 
 fun main() {
-    val provider = FancyInfoProvider()
+    // We just made a object expression instead of creating a new class that
+    // implements the interface
+    val provider = object : PersonInfoProvider {
+        override val providerInfo: String
+            get() = "new info provider"
+        // override a function
+
+        fun getSessionID() = "id"
+        // We can not only override functions but can add to them too
+
+        override fun printInfo(person: Person){}
+        // We override this to tell the compiler that it is implemented
+        // otherwise would give an error, suggesting to make the object
+        // abstract.
+    }
     provider.printInfo(Person())
     provider.getSessionID()
     // called an function of the class by providing an empty instance of the
@@ -88,14 +102,12 @@ fun main() {
             //the above line shows type casting
             // where the infoProvider if isn't a SessionInfoProvider
             // can be casted as one to use its properties.
-            // Kotlin supports Smart Cast which means you don't need to
+            // Kotlin supports Smart Cast which means you do n't need to
             // explicitly mention the interface always like -
             // infoProvider.getSessionID()  => this statement will work the same.
         }
     // The function is to check whether the class implements the SessionInfoProvider
     // the "is" provider tells whether it is implemented or not.
 
-
-    //TYPE CASTING
 
 }
