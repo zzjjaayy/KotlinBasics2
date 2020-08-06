@@ -27,7 +27,7 @@ object EntityFactory{
 
         val name = when(type) {
             levelType.EASY -> "Easy"
-            // we can use type.name where type is the input parameter and type is a fn.
+            // we can use type.name where type is the input parameter and name is a fn.
             levelType.MEDIUM -> "Medium"
             // we can also use the function created in enum class "getFormattedName"
             // like - levelType.MEDIUM -> getFormattedName

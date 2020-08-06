@@ -27,8 +27,8 @@ fun main() {
             }
     // Above the map function can change the data type
     // where the type changed from String to Int
-    // "take" fn takes the first 3 items from the list
-    // "takeLast" will take the last 3 items
+    // "take" fn takes the first 2 items from the list
+    // "takeLast" will take the last 2 items
 
     list1.filterNotNull()
             .filter {
